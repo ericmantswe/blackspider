@@ -4,7 +4,7 @@ import { cn } from '../../lib/utils';
 import { 
   Home, Film, Tv, Gamepad2, Play, Music, 
   AppWindow, Book, TrendingUp, Trophy, 
-  Heart, Download, Settings, Bug
+  Heart, Download, Settings, Bug, Globe
 } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../../lib/sound';
 
@@ -27,6 +27,7 @@ const navSections = [
     items: [
       { icon: TrendingUp, label: 'Trending', path: '/trending' },
       { icon: Trophy, label: 'Top 100', path: '/top100' },
+      { icon: Globe, label: 'Web Crawler', path: '/crawler' },
     ]
   },
   {

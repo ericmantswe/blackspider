@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSettingsStore } from '../store/useSettingsStore';
 import { useHistoryStore } from '../store/useHistoryStore';
 import { useFavoritesStore } from '../store/useFavoritesStore';
-import { Trash2, Palette, Link as LinkIcon, Home, Volume2 } from 'lucide-react';
+import { Trash2, Palette, Link as LinkIcon, Home, Volume2, Key, Globe } from 'lucide-react';
 import { isSoundEnabled, setSoundEnabled, playClickSound } from '../lib/sound';
 
 export function Settings() {
@@ -107,6 +107,45 @@ export function Settings() {
                 />
                 <div className="w-11 h-6 bg-secondary peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
               </label>
+            </div>
+          </div>
+        </div>
+
+        {/* Firecrawl API Integration */}
+        <div className="bg-card rounded-none overflow-hidden">
+          <div className="p-4 bg-secondary/50 border-b border-border flex items-center gap-2">
+            <Key className="w-5 h-5 text-primary" />
+            <h2 className="font-bold text-white">Firecrawl API Integration</h2>
+          </div>
+          <div className="p-6 space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-white mb-1.5">
+                Firecrawl API Key
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="password"
+                  value={settings.firecrawlApiKey}
+                  onChange={(e) => {
+                    settings.setFirecrawlApiKey(e.target.value);
+                  }}
+                  placeholder="fc-..."
+                  className="flex-1 bg-input rounded-none border border-border px-3 py-2 text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    settings.setFirecrawlApiKey('fc-3539be5ea22744d4b084ed54c7a2777f');
+                  }}
+                  className="px-4 py-2 bg-secondary hover:bg-secondary/80 text-white rounded-none text-sm font-medium transition-colors border border-border"
+                >
+                  Reset Default
+                </button>
+              </div>
+              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                This key powers the **Blackspider Web Crawler & Scraper** to convert websites to markdown structure, extract links, or perform search-grounded crawls directly from your dashboard.
+              </p>
             </div>
           </div>
         </div>

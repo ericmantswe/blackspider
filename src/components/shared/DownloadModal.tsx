@@ -87,8 +87,30 @@ echo.
 echo Installing dependencies (this may take a minute)...
 call npm install
 echo.
-echo Launching Blackspider Desktop...
-call npm run desktop:dev
+echo ===================================================
+echo   Choose Desktop App Mode
+echo ===================================================
+echo   [1] Run application in Dev/Interactive mode
+echo   [2] Build/Package standalone setup installer (.exe)
+echo ===================================================
+echo.
+set /p choice="Enter option (1 or 2, default is 1): "
+
+if "%choice%"=="2" (
+    echo.
+    echo Packaging standalone Windows application (.exe)...
+    call npm run desktop:build
+    echo.
+    echo ===================================================
+    echo   [SUCCESS] Standalone EXE Installer Built!
+    echo ===================================================
+    echo Installer is located in: %cd%\\dist-desktop\\
+    echo.
+) else (
+    echo.
+    echo Launching Blackspider Desktop...
+    call npm run desktop:dev
+)
 pause`;
     } else {
       filename = 'blackspider-launcher.sh';
@@ -126,8 +148,30 @@ echo ""
 echo "Installing dependencies (this may take a minute)..."
 npm install
 echo ""
-echo "Launching Blackspider Desktop..."
-npm run desktop:dev`;
+echo "==================================================="
+echo "  Choose Desktop App Mode"
+echo "==================================================="
+echo "  [1] Run application in Dev/Interactive mode"
+echo "  [2] Build/Package standalone desktop app installer"
+echo "==================================================="
+echo ""
+read -p "Enter option (1 or 2, default is 1): " choice
+
+if [ "$choice" = "2" ]; then
+    echo ""
+    echo "Packaging standalone application installer..."
+    npm run desktop:build
+    echo ""
+    echo "==================================================="
+    echo "  [SUCCESS] Standalone Installer Built!"
+    echo "==================================================="
+    echo "Installer is located in: $(pwd)/dist-desktop/"
+    echo ""
+else
+    echo ""
+    echo "Launching Blackspider Desktop..."
+    npm run desktop:dev
+fi`;
     }
 
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
@@ -285,7 +329,7 @@ npm run desktop:dev`;
                   </div>
                   <button
                     onClick={() => {
-                      setRepoUrl('https://github.com/ericmantswe/blackspider-media-vault.git');
+                      setRepoUrl('https://github.com/ericmantswe/blackspider.git');
                       playClickSound();
                     }}
                     onMouseEnter={playHoverSound}

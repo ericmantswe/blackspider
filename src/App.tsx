@@ -15,6 +15,7 @@ import { TorrentDetails } from './pages/TorrentDetails';
 import { Favorites } from './pages/Favorites';
 import { Downloads } from './pages/Downloads';
 import { Settings } from './pages/Settings';
+import { Crawler } from './pages/Crawler';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="torrent/:id" element={<TorrentDetails />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="downloads" element={<Downloads />} />
+            <Route path="crawler" element={<Crawler />} />
             <Route path="settings" element={<Settings />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
