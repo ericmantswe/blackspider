@@ -1,0 +1,6 @@
+{
+  "name": "Black Spider",
+  "description": "A modern, production-ready torrent search client with a dark futuristic interface.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
