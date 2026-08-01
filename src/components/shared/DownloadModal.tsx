@@ -15,7 +15,7 @@ type OS = 'windows' | 'mac' | 'linux';
 
 export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
   const [activeOS, setActiveOS] = useState<OS>('windows');
-  const [repoUrl, setRepoUrl] = useState('https://github.com/ericmantswe/blackspider-media-vault.git');
+  const [repoUrl, setRepoUrl] = useState('https://github.com/ericmantswe/blackspider.git');
   const [copied, setCopied] = useState(false);
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
   const [simulating, setSimulating] = useState(false);
